@@ -1,8 +1,9 @@
 # Concurrency-Programing
 Multithreading and Parallel Programming
 
-Unlike Java, C++ does not have a built-in Semaphore class.  I implement one by using the C++ mutex and condition_variable. 
+1. Implement a semaphore for C++ 
 
+Unlike Java, C++ does not have a built-in Semaphore class.  I implement one by using the C++ mutex and condition_variable. 
 
 In the following `semaphore::wait()`, you don't see `lck.unlock()`.
 ```
