@@ -1,7 +1,7 @@
 # Concurrency-Programing
 Multithreading and Parallel Programming
 
-1. A semaphore class for C++ 
+#### 1. [A semaphore class for C++](https://github.com/JingDL/Concurrency-Programing/blob/master/semaphore.cpp)
 
 Unlike Java, C++ does not have a built-in Semaphore class.  I implement one by using the C++ mutex and condition_variable. 
 
@@ -29,7 +29,7 @@ void semaphore::post(){
 ```
 In my experience, `notify_one()` is faster than `notify_all()` for most situations.  You may use `notify_all()` if it is necessary for your situation.
 
-2. A Bounded Blocking Queue in Java
+#### 2. [A Bounded Blocking Queue in Java](https://github.com/JingDL/Concurrency-Programing/blob/master/BoundedBlockingQueue.java)
 
 I use an `ArrayDeque` to hold the data.  When we need a `FIFO` queue or a `Stack`, `ArrayDeque` has better performance than `LinkedList` and the built-in `Stack`.  `ArrayDeque` internally use a ring buffer to accomodate the data.  If the data out-grows its capacity, it allocates a new buffer with 2 times of the original size, and copies the data to the new buffer.  For my case, I pre-allocate the buffer for performance consideration.  The buffer relocation does not happen here.
 
