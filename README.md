@@ -53,7 +53,7 @@ public void enqueue(int element) throws InterruptedException {
     }
   ```
   
-  #### 3.[A ReadWriteLock in Cpp](https://github.com/JingDL/Concurrency-Programing/blob/master/ReentrantReadWriteLock.cpp)
-  Unlike other readwriteLock, which usually give readers priority over writers.  This lock give the equal opportunities to readers and writers.
+  #### 3.[A ReadWriteLock in C++](https://github.com/JingDL/Concurrency-Programing/blob/master/ReentrantReadWriteLock.cpp)
+  Unlike many other readWriteLocks, which usually give readers priority over writers.  This lock gives the equal opportunities to readers and writers.
 
 
