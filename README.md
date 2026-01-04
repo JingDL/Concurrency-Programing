@@ -17,7 +17,7 @@ void semaphore::wait(){
 ```
 unique_lock follows `RAII` programming idiom.  When the function `wait()` returns, the destructor of `unique_lock` is called to unlock the lock.  This is true even if an exception happens in the function.  So I don't need to explicitly call the `unlock()` function.
 
-Can we replace `while(permit <= 0)` with `if(permit <= 0)`?  No. We must use `while()` here to handle spurious wakeup.  When the function calls `cv.wait()`, internally it calls system call `futex()` in Linux (Other OS is similiar).  If the OS sends a signal to this thread, it can make `cv.wait()` to exit -- This is called spirous wakeup.  To handle the spurious wakeup, we must recheck the permit value one more time in the while loop.
+Can we replace `while(permit <= 0)` with `if(permit <= 0)`?  No. We must use `while()` here to handle spurious wakeup.  When the function calls `cv.wait()`, internally it calls system call `futex()` in Linux (Other OS is similiar).  If the OS sends a signal to this thread, it can make `cv.wait()` to exit -- This is called spuirous wakeup.  To handle the spurious wakeup, we must recheck the permit value one more time in the while loop.
 
 Does the thread hold lck from the beginning to the end of `semaphore::wait()`? No. When entering `cv.wat()`, the thread atomically unclocks lck and puts itself on a waiting queue.  When notified by another thread, the thread first locks lck, and then exists from `cv.wait()`. When this thread is inside cv.wait(), anther thread calling `seamphore::wait()` won't be blocked by lck.
 
